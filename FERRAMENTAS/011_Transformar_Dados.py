@@ -1,3 +1,4 @@
+from utilidades import ler_arquivo
 from pathlib import Path
 
 import pandas as pd
@@ -69,37 +70,6 @@ def selecionar_arquivo():
 
         except ValueError:
             print("Erro: digite apenas um número.")
-
-
-def carregar_arquivo(caminho):
-    extensao = caminho.suffix.lower()
-
-    try:
-
-        if extensao == ".csv":
-            return pd.read_csv(caminho)
-
-        elif extensao == ".xlsx":
-            return pd.read_excel(caminho)
-
-        elif extensao == ".xls":
-            return pd.read_excel(caminho)
-
-        elif extensao == ".json":
-            return pd.read_json(caminho)
-
-        elif extensao == ".parquet":
-            return pd.read_parquet(caminho)
-
-        else:
-            print("\nFormato não suportado.")
-            return None
-
-    except Exception as erro:
-        print(
-            f"\nErro ao carregar o arquivo:\n{erro}"
-        )
-        return None
 
 
 def selecionar_coluna(df):
@@ -1098,7 +1068,7 @@ def main():
     # CARREGAMENTO
     # --------------------------------------------------------
 
-    df = carregar_arquivo(
+    df = ler_arquivo(
         caminho_arquivo
     )
 

@@ -1,4 +1,5 @@
 from pathlib import Path
+from utilidades import ler_arquivo
 
 import pandas as pd
 import seaborn as sns
@@ -40,27 +41,6 @@ def listar_arquivos():
             and arquivo.suffix.lower() in extensoes
         ]
     )
-
-
-def ler_arquivo(caminho):
-    extensao = caminho.suffix.lower()
-
-    if extensao == ".csv":
-        return pd.read_csv(caminho)
-
-    elif extensao in {".xlsx", ".xls"}:
-        return pd.read_excel(caminho)
-
-    elif extensao == ".json":
-        return pd.read_json(caminho)
-
-    elif extensao == ".parquet":
-        return pd.read_parquet(caminho)
-
-    else:
-        raise ValueError(
-            "Formato de arquivo não suportado."
-        )
 
 
 def nome_seguro(texto):

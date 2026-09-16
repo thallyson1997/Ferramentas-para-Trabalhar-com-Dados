@@ -1,3 +1,4 @@
+from utilidades import ler_arquivo
 from pathlib import Path
 import pandas as pd
 
@@ -24,31 +25,6 @@ def exibir(texto=""):
     """Exibe no terminal e armazena para o relatório TXT."""
     print(texto)
     relatorio.append(str(texto))
-
-
-# ============================================================
-# LEITURA DOS ARQUIVOS
-# ============================================================
-
-def ler_arquivo(caminho):
-    extensao = caminho.suffix.lower()
-
-    if extensao == ".csv":
-        return pd.read_csv(caminho)
-
-    elif extensao in [".xlsx", ".xls"]:
-        return pd.read_excel(caminho)
-
-    elif extensao == ".json":
-        return pd.read_json(caminho)
-
-    elif extensao == ".parquet":
-        return pd.read_parquet(caminho)
-
-    else:
-        raise ValueError(
-            f"Formato não suportado: {extensao}"
-        )
 
 
 # ============================================================

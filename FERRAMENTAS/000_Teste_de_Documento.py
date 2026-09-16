@@ -1,3 +1,4 @@
+from utilidades import ler_arquivo
 from pathlib import Path
 import shutil
 import time

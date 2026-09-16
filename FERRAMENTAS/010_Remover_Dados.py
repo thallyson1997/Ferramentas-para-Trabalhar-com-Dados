@@ -2,7 +2,7 @@
 # REMOVER.py
 # Remove linhas de um dataset com base em valores de uma coluna
 # ============================================================
-
+from utilidades import ler_arquivo
 from pathlib import Path
 import pandas as pd
 import numpy as np
@@ -43,30 +43,6 @@ def listar_arquivos():
     ]
 
     return sorted(arquivos)
-
-
-def carregar_arquivo(caminho):
-    """Carrega o arquivo utilizando o pandas."""
-
-    extensao = caminho.suffix.lower()
-
-    if extensao == ".csv":
-        return pd.read_csv(caminho)
-
-    elif extensao == ".xlsx":
-        return pd.read_excel(caminho)
-
-    elif extensao == ".xls":
-        return pd.read_excel(caminho)
-
-    elif extensao == ".json":
-        return pd.read_json(caminho)
-
-    elif extensao == ".parquet":
-        return pd.read_parquet(caminho)
-
-    else:
-        raise ValueError("Formato de arquivo não suportado.")
 
 
 def eh_coluna_numerica(serie):
@@ -435,7 +411,7 @@ def main():
 
     try:
 
-        df = carregar_arquivo(arquivo_selecionado)
+        df = ler_arquivo(arquivo_selecionado)
 
     except Exception as erro:
 

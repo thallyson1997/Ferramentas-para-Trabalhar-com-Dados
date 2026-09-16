@@ -1,3 +1,4 @@
+from utilidades import ler_arquivo
 from pathlib import Path
 import pandas as pd
 
@@ -11,33 +12,6 @@ PASTA_REPOSITORIO = PASTA_FERRAMENTAS.parent
 
 PASTA_ENTRADA = PASTA_REPOSITORIO / "ENTRADA"
 PASTA_SAIDA = PASTA_REPOSITORIO / "SAIDA"
-
-
-# ============================================================
-# LEITURA DOS ARQUIVOS
-# ============================================================
-
-def ler_arquivo(caminho):
-
-    extensao = caminho.suffix.lower()
-
-    if extensao == ".csv":
-        return pd.read_csv(caminho)
-
-    elif extensao in [".xlsx", ".xls"]:
-        return pd.read_excel(caminho)
-
-    elif extensao == ".json":
-        return pd.read_json(caminho)
-
-    elif extensao == ".parquet":
-        return pd.read_parquet(caminho)
-
-    else:
-        raise ValueError(
-            f"Formato não suportado: {extensao}"
-        )
-
 
 # ============================================================
 # MOSTRAR COLUNAS
